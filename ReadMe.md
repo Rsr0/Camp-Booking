@@ -1,5 +1,9 @@
-# Follow the steps to run the project -
+# Tech Stack
+- Frontend : Angular
+- Database : SQL Server
+- Backend : ASP.NET MVC
 
+# Follow the steps to run the project -
  1. Clone the repository using command:	`git clone`
  2. Download and Restore the CampDb.bacpac file in Sql Server. 
  3. Open directory CampBooking/CampAPI and open file CampAPI.sln .
