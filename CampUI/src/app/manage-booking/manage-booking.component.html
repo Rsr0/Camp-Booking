@@ -1,0 +1,71 @@
+<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32">
+            <use xlink:href="#bootstrap"></use>
+        </svg>
+        <span class="fs-4">Manage Booking</span>
+    </a>
+
+    <ul class="nav nav-pills  ">
+        <li class="nav-item"><a routerLink="/dashboard" class="nav-link " aria-current="page">Dashboard</a></li>
+    </ul>
+</header>
+
+<div class="container">
+
+    <form>
+        <div class="mb-3">
+            <label for="brn" class="form-label">Booking Reference Number</label>
+            <input type="text" #brn class="form-control" aria-describedby="emailHelp" placeholder="Enter BRN here"
+                required>
+
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="searchBooking(brn.value)">Search</button>
+
+    </form>
+
+    <!-- <div class="container row">
+        <div class="col-sm-3 p-3">Rate your experience:</div>
+        <div class="col-sm-6 ">
+            <ngb-rating [max]="5" [(rate)]="starRating"  (click)="countStar()" [readonly]="false"></ngb-rating>
+        </div>
+
+    </div> -->
+
+
+</div>
+
+<br><br>
+<div class="container" *ngIf="collection">
+    <ul class="list-group list-group-flush">
+
+        <li class="list-group-item text-center display-6">{{camp.name}} Booking Details <br></li>
+
+
+        <li class="list-group-item "><b>Booking Reference Number (BRN) :</b> {{collection.brn}} </li>
+
+        <li class="list-group-item"><b>Check-in:</b> {{collection.checkIn |date}}</li>
+        <li class="list-group-item"><b>Check-out :</b> {{collection.checkOut |date}}</li>
+        <li class="list-group-item"><b>Rate per Night : </b> INR {{camp.rate}}</li>
+        <li class="list-group-item"><b>Total Nights :</b> {{collection.nights}} </li>
+        <li class="list-group-item"><b>Total Amount :</b> INR {{collection.amount}}</li>
+        <li class="list-group-item"><b>Billing Address :</b> {{collection.address}}</li>
+        <li class="list-group-item"><b>State :</b> {{collection.state}}</li>
+        <li class="list-group-item"><b>Country :</b> {{collection.country}}</li>
+        <li class="list-group-item"><b>ZipCode :</b> {{collection.zip}}</li>
+        <li class="list-group-item"><b>Cell Phone :</b> {{collection.phone}}</li>
+    </ul>
+    <br>
+    <div *ngIf="isVisited(collection.checkIn)">
+        <button type="submit" class="btn btn-danger"  (click)="cancelBooking(collection.brn)">Cancel Booking</button>
+        &nbsp;&nbsp;&nbsp;
+    </div>
+    <br>
+</div>
+
+
+<div class="container alert alert-danger" *ngIf="alert">
+    <strong> No Booking details found! </strong>
+    <p>Please check your Booking Reference Number again.</p>
+
+</div>
